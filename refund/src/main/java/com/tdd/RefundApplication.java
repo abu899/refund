@@ -1,4 +1,4 @@
-package com.tdd.refund;
+package com.tdd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
