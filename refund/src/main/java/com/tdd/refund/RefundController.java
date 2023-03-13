@@ -1,4 +1,4 @@
-package com.tdd.product;
+package com.tdd.refund;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class ProductController {
+public class RefundController {
 
-    private final ProductService productService;
+    private final RefundService refundService;
 
-    @PostMapping("/product")
-    public ResponseEntity<Void> product(@RequestBody ProductDto productDto) {
-        productService.addProduct(productDto);
+    @PostMapping("/refund")
+    public ResponseEntity<Void> refund(@RequestBody RefundRequestDto requestDto) {
+        refundService.addRefund(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

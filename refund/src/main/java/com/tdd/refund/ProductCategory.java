@@ -1,4 +1,4 @@
-package com.tdd.product;
+package com.tdd.refund;
 
 public enum ProductCategory {
     SHOES,

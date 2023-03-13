@@ -1,5 +1,7 @@
 package com.tdd.customer;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.Assert;
@@ -12,6 +14,8 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @Entity
+@AllArgsConstructor
+@Builder
 public class Customer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +34,5 @@ public class Customer {
         this.name = name;
         this.nation = nation;
         this.passportNum = passportNum;
-    }
-
-    public void assignId(Long id) {
-        this.id = id;
     }
 }
