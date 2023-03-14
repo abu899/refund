@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 public class RefundRequestDto {
     private int price;
     private ProductCategory productCategory;
-    private String passportNumber;
+    private String encPassportNum;
 
-    public RefundRequestDto(int price, ProductCategory productCategory, String passportNum) {
+    public RefundRequestDto(int price, ProductCategory productCategory, String encPassportNum) {
         this.price = price;
         this.productCategory = productCategory;
-        this.passportNumber = passportNum;
+        this.encPassportNum = encPassportNum;
     }
 }

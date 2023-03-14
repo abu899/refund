@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 public class CustomerDto {
     private String name;
     private String nation;
-    private String passportNum;
+    private String encPassportNum;
 
-    public CustomerDto(String name, String nation, String passportNum) {
+    public CustomerDto(String name, String nation, String encPassportNum) {
         this.name = name;
         this.nation = nation;
-        this.passportNum = passportNum;
+        this.encPassportNum = encPassportNum;
     }
 }
