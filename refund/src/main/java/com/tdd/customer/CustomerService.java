@@ -2,13 +2,16 @@ package com.tdd.customer;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 @RequiredArgsConstructor
 @Service
+@Transactional(readOnly = true)
 public class CustomerService {
     private final CustomerRepository customerRepository;
 
+    @Transactional
     public void addCustomer(CustomerDto customerDto) {
         validatePassport(customerDto.getNation());
         String decryptPassportNum = decryptPassportNumber(customerDto.getEncPassportNum());

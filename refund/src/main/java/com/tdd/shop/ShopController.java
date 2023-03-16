@@ -14,8 +14,8 @@ public class ShopController {
     private final ShopService shopService;
 
     @PostMapping("/shop")
-    public ResponseEntity<Void> shop(@RequestBody CreateShopDto createShopDto) {
-        shopService.createShop(createShopDto);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<Long> shop(@RequestBody CreateShopDto createShopDto) {
+        Long shopId = shopService.createShop(createShopDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(shopId);
     }
 }

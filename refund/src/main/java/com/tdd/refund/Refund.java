@@ -41,4 +41,12 @@ public class Refund {
         this.customer = customer;
         this.refundStatus = refundType == RefundType.IMMEDIATE_REFUND ? RefundStatus.APPROVE : RefundStatus.PRE_APPROVE;
     }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
+    public void cancelRefund() {
+        this.refundStatus = RefundStatus.CANCEL;
+    }
 }

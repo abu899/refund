@@ -1,9 +1,7 @@
 package com.tdd.shop;
 
 import com.tdd.refund.Refund;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
@@ -12,6 +10,8 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@AllArgsConstructor
 public class Shop {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,8 +9,9 @@ public class RefundSteps {
     public static RefundRequestDto makeRefundRequest() {
         int price = 30000;
         ProductCategory productCategory = ProductCategory.GLASSES;
-        String passportNumber = "MDKEOQ2MCJDHAN128X0A";
-        return new RefundRequestDto(price, productCategory, passportNumber);
+        String passportNumber = "CDNVIE12APXKALXNDU27";
+        Long shopId = 1L;
+        return new RefundRequestDto(shopId, price, productCategory, passportNumber);
     }
 
     static ExtractableResponse<Response> makeRefundApiRequest(RefundRequestDto refundRequestDto) {
@@ -25,7 +26,7 @@ public class RefundSteps {
 
     public static ExtractableResponse<Response> findRefundApiRequest(String encPassportNum) {
         return RestAssured.given().log().all()
-                .param("encPassportNum")
+                .param("encPassportNum", encPassportNum)
                 .when()
                 .get("/refund")
                 .then()

@@ -22,4 +22,10 @@ public class RefundController {
         RefundResponseDto response = refundService.findRefundByPassportNum(encPassportNum);
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/cancel")
+    public ResponseEntity<RefundCancelDto> cancel(@RequestParam Long refundId) {
+        RefundCancelDto cancelDto = refundService.cancel(refundId);
+        return ResponseEntity.ok(cancelDto);
+    }
 }
