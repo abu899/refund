@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -26,11 +29,12 @@ public class RefundService {
         refundRepository.save(refund);
     }
 
-    public RefundResponseDto findRefundByPassportNum(String encPassportNum) {
+    public List<RefundResponseDto> findRefundByPassportNum(String encPassportNum) {
         String decryptPassportNumber = customerService.decryptPassportNumber(encPassportNum);
-        Refund refund = refundRepository.findByDecPassportNum(decryptPassportNumber)
-                .orElseThrow(IllegalArgumentException::new);
-        return new RefundResponseDto(refund.getId(), refund.getPrice(), refund.getRefundCost());
+        List<Refund> refunds = refundRepository.findByDecPassportNum(decryptPassportNumber);
+        return refunds.stream()
+                .map(refund -> new RefundResponseDto(refund.getId(), refund.getPrice(), refund.getRefundCost()))
+                .collect(Collectors.toList());
     }
 
     @Transactional

@@ -34,7 +34,25 @@ public class RefundApiTest extends ApiTest {
         String encPassportNum = "CDNVIE12APXKALXNDU27";
         ExtractableResponse<Response> response = RefundSteps.findRefundApiRequest(encPassportNum);
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
-        assertThat(response.jsonPath().getInt("price")).isEqualTo(refundRequestDto.getPrice());
+        assertThat(response.jsonPath().getList("refundId").size()).isEqualTo(1);
+        assertThat(response.jsonPath().getList("price").get(0)).isEqualTo(refundRequestDto.getPrice());
+    }
+
+    @Test
+    void findAllByPassportNum() {
+        ShopSteps.createShopApiRequest(ShopSteps.createShopRequest());
+        CustomerSteps.makeCustomerApiRequest(CustomerSteps.getCustomerRequest());
+
+        RefundRequestDto refundRequestDto = RefundSteps.makeRefundRequest();
+        int addRefundsCount = 3;
+        for (int i = 0; i < addRefundsCount; i++) {
+            RefundSteps.makeRefundApiRequest(refundRequestDto);
+        }
+
+        String encPassportNum = "CDNVIE12APXKALXNDU27";
+        ExtractableResponse<Response> response = RefundSteps.findRefundApiRequest(encPassportNum);
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.jsonPath().getList("refundId").size()).isEqualTo(addRefundsCount);
     }
 
     @Test

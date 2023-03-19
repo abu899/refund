@@ -14,7 +14,7 @@ public class RefundSteps {
         return new RefundRequestDto(shopId, price, productCategory, passportNumber);
     }
 
-    static ExtractableResponse<Response> makeRefundApiRequest(RefundRequestDto refundRequestDto) {
+    public static ExtractableResponse<Response> makeRefundApiRequest(RefundRequestDto refundRequestDto) {
         return RestAssured.given().log().all()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(refundRequestDto)

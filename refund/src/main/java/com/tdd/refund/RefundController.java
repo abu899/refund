@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class RefundController {
@@ -18,8 +20,8 @@ public class RefundController {
     }
 
     @GetMapping("/refund")
-    public ResponseEntity<RefundResponseDto> refund(@RequestParam String encPassportNum) {
-        RefundResponseDto response = refundService.findRefundByPassportNum(encPassportNum);
+    public ResponseEntity<List<RefundResponseDto>> refund(@RequestParam String encPassportNum) {
+        List<RefundResponseDto> response = refundService.findRefundByPassportNum(encPassportNum);
         return ResponseEntity.ok(response);
     }
 

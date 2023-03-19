@@ -22,4 +22,13 @@ public class ShopSteps {
                 .then()
                 .log().all().extract();
     }
+
+    public static ExtractableResponse<Response> makeShopFindApiRequest(Long shopId) {
+        return RestAssured.given().log().all()
+                .pathParam("shopId", shopId)
+                .when()
+                .get("/refund/{shopId}")
+                .then()
+                .log().all().extract();
+    }
 }
